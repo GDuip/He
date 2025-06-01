@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inspector Pro X v2.0 - Ultimate Browser Diagnostics</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Inter Font (Optional, can be self-hosted or removed if not desired) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="app-shell">
+    <aside class="app-sidebar" id="appSidebar">
+      <header class="sidebar-header">
+        <div class="logo-title">
+          <span class="logo-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8Zm1-9.586V7h-2v3.586l-1.707-1.707-1.414 1.414L11.586 14l-3.707 3.707 1.414 1.414L11 15.414V19h2v-3.586l1.707 1.707 1.414-1.414L12.414 14l3.707-3.707-1.414-1.414L13 12.414Z"/></svg>
+          </span>
+          <span class="sidebar-title">Inspector X <sub>v2</sub></span>
+        </div>
+        <button class="sidebar-toggle-btn desktop-toggle" id="sidebarToggleDesktop" title="Toggle Sidebar Width" aria-label="Toggle Sidebar Width">
+          <svg class="icon-menu-alt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+        </button>
+      </header>
+
+      <nav class="sidebar-nav" role="navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#" class="nav-link active" data-target="display-panel" role="button">
+            <svg class="icon-display" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="12" rx="2" ry="2"/><line x1="12" y1="19" x2="12" y2="15"/><line x1="7" y1="19" x2="17" y2="19"/></svg>
+            <span class="link-text">Display</span></a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="system-panel" role="button">
+            <svg class="icon-chip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="22" y2="7"/><line x1="2" y1="17" x2="22" y2="17"/></svg>
+            <span class="link-text">System & OS</span></a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="hardware-panel" role="button">
+            <svg class="icon-cpu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+            <span class="link-text">Hardware</span></a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="media-panel" role="button">
+            <svg class="icon-play-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            <span class="link-text">Media</span></a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="connectivity-panel" role="button">
+            <svg class="icon-wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+            <span class="link-text">Connectivity</span></a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="browser-panel" role="button">
+             <svg class="icon-browser" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6a2 2 0 012-2h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"/><path d="M2 10h20M6 6V2M10 6V2M14 6V2M18 6V2"/></svg>
+            <span class="link-text">Browser</span></a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="performance-panel" role="button">
+            <svg class="icon-activity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <span class="link-text">Performance</span></a></li>
+           <li class="nav-item"><a href="#" class="nav-link" data-target="input-devices-panel" role="button">
+            <svg class="icon-mouse-pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l7.07 A1 1 0 0 1 11 4v12a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V4a1 1 0 0 1 .93-1L21 3M7 21h10"/></svg>
+            <span class="link-text">Input Devices</span></a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="security-permissions-panel" role="button">
+            <svg class="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></svg>
+            <span class="link-text">Security & Permissions</span></a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="storage-panel" role="button">
+            <svg class="icon-database" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            <span class="link-text">Storage</span></a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="accessibility-panel" role="button">
+            <svg class="icon-accessibility" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="2"/><path d="M12 22 A10 10 0 0 0 12 2 M12 22 A10 10 0 0 1 12 2"/><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0-6 0"/><path d="M9 20l-2.5-3.5M15 20l2.5-3.5M5 12H2M19 12h3"/></svg>
+            <span class="link-text">Accessibility</span></a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="hdmi-info-panel" role="button">
+            <svg class="icon-hdmi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10V7a2 2 0 00-2-2H4a2 2 0 00-2 2v3M2 10h20v4H2zM5 10V5M19 10V5M2 14v3a2 2 0 002 2h2.5M15.5 19H18a2 2 0 002-2v-3"/></svg>
+            <span class="link-text">HDMI Limitations</span></a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-controls">
+        <button id="copyReportBtn" class="icon-btn" title="Copy Full Report" aria-label="Copy Full Report">
+          <svg class="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          <span class="btn-text">Copy Report</span>
+        </button>
+        <button id="themeToggleBtn" class="icon-btn" title="Toggle Theme" aria-label="Toggle Theme">
+          <svg id="themeIconSun" class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg id="themeIconMoon" class="icon-moon" style="display:none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <span class="btn-text">Toggle Theme</span>
+        </button>
+      </div>
+    </aside>
+
+    <div class="app-content-wrapper">
+      <header class="page-header">
+        <button class="mobile-sidebar-toggle" id="sidebarToggleMobile" aria-label="Toggle Mobile Sidebar Menu">
+           <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+        <h1>Dashboard</h1>
+      </header>
+
+      <main class="app-main-content" role="main">
+        <div class="global-disclaimer">
+          <p><strong>Accuracy Note:</strong> This tool provides browser-based diagnostics. Low-level hardware details (e.g., HDMI version, cable speed), precise OS versions outside UserAgentData, or specific CPU models are **not directly detectable**. Guesses are heuristic. For definitive hardware analysis, use dedicated system utilities.</p>
+        </div>
+
+        <!-- Existing Panels - To Be Enhanced -->
+        <section id="display-panel" class="content-panel active" role="tabpanel">
+          <div class="content-section">
+            <h2>Primary Display Info
+              <button id="loadMultiScreenBtn" class="action-btn action-btn-secondary" title="Requires Permission (if applicable)">
+                <svg class="icon-screens" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 21h4v-4h-4v4zm0-11h4V6h-4v4zm8-4h4V6h-4v4zm-4 0h4V6h-4v4zM2 21h4v-4H2v4zm0-11h4V6H2v4zm16 4h4v-4h-4v4zm-4 0h4v-4h-4v4z"/></svg>
+                All Screens Info
+              </button>
+            </h2>
+            <div class="info-grid">
+              <div class="info-card">
+                <div class="card-label">Current Screen Resolution</div>
+                <div id="currentResolution" class="card-value">-</div>
+              </div>
+              <div class="info-card">
+                <div class="card-label">Viewport Resolution</div>
+                <div id="availableResolution" class="card-value">-</div>
+              </div>
+              <div class="info-card">
+                <div class="card-label">Screen Color Depth</div>
+                <div id="colorDepthVal" class="card-value">-</div>
+              </div>
+              <div class="info-card">
+                <div class="card-label">Device Pixel Ratio</div>
+                <div id="pixelRatioVal" class="card-value">-</div>
+              </div>
+              <div class="info-card">
+                <div class="card-label">Screen Orientation</div>
+                <div id="orientationVal" class="card-value">-</div>
+              </div>
+              <div class="info-card">
+                <div class="card-label">Touch Support Points</div>
+                <div id="touchSupportVal" class="card-value">-</div>
+              </div>
+              <div class="info-card">
+                <div class="card-label">HDR Capability (CSS Check)</div>
+                <div id="hdrStatusVal" class="card-value">-</div>
+              </div>
+              <div class="info-card">
+                <div class="card-label">Color Gamut (CSS Check)</div>
+                <div id="colorGamutStatusVal" class="card-value">-</div>
+              </div>
+            </div>
+          </div>
+          <div id="multiScreenDetailsContainer" class="content-section" style="display:none;">
+            <h2>Extended Screen Details</h2>
+            <div id="multiScreenDetailsGrid" class="info-grid"></div>
+          </div>
+          <div class="content-section">
+            <h2>Refresh Rate Estimation
+              <button id="startRefreshRateTestBtn" class="action-btn">
+                <svg class="icon-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                Start Full Test
+              </button>
+            </h2>
+            <div class="info-grid">
+              <div class="info-card full-span">
+                <div class="card-label">Estimated Display Refresh Rate</div>
+                <div id="estimatedFpsVal" class="card-value">- Hz</div>
+                <canvas id="fpsVisualizer"></canvas>
+                <p class="card-description">Real-time estimation via `requestAnimationFrame`. More indicative during smooth browser animations.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="system-panel" class="content-panel" role="tabpanel"> /* ... cards ... */ </section>
+        <section id="hardware-panel" class="content-panel" role="tabpanel"> /* ... cards ... */ </section>
+        <section id="media-panel" class="content-panel" role="tabpanel">
+            <div class="content-section">
+               <h2>Audio Context Properties
+                  <button id="checkAudioContextBtn" class="action-btn action-btn-secondary">
+                    <svg class="icon-sliders" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+                    Inspect Context
+                  </button>
+               </h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="card-label">Default Sample Rate</div>
+                        <div id="audioCtxSampleRate" class="card-value">- Hz</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-label">Est. Output Latency</div>
+                        <div id="audioCtxOutputLatency" class="card-value">- Secs</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Other media sections -->
+        </section>
+        <section id="connectivity-panel" class="content-panel" role="tabpanel">
+            <div class="content-section">
+              <h2>WebRTC Capabilities <button id="checkWebRTCBtn" class="action-btn action-btn-secondary"><svg class="icon-phone-call" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>Check</button></h2>
+              <div class="info-grid">
+                <div class="info-card">
+                  <div class="card-label">RTCPeerConnection API</div>
+                  <div id="webRtcPeerConn" class="card-value">-</div>
+                </div>
+                 <div class="info-card">
+                    <div class="card-label">getUserMedia API</div>
+                    <div id="webRtcGetUserMedia" class="card-value">-</div>
+                </div>
+                <div class="info-card full-span">
+                  <div class="card-label">Available Media Input Devices <span class="small-note">(Initial list, may update after permission)</span></div>
+                  <div id="webRtcMediaDevicesList" class="list-display-container"><p>Click "Check" to enumerate.</p></div>
+                </div>
+              </div>
+            </div>
+            <!-- Other connectivity -->
+        </section>
+        <section id="browser-panel" class="content-panel" role="tabpanel"> /* ... */ </section>
+
+        <section id="performance-panel" class="content-panel" role="tabpanel">
+          <div class="content-section">
+            <h2>Core Web Vitals & Page Performance
+              <button id="refreshPerfMetricsBtn" class="action-btn action-btn-secondary">
+                <svg class="icon-refresh-cw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                Refresh Metrics
+              </button>
+            </h2>
+            <div class="info-grid">
+              <div class="info-card"> <div class="card-label">Navigation Type</div> <div id="perfNavTypeVal" class="card-value">-</div> </div>
+              <div class="info-card"> <div class="card-label">Time to First Byte (TTFB)</div> <div id="perfTtfbVal" class="card-value">-</div> </div>
+              <div class="info-card"> <div class="card-label">First Paint (FP)</div> <div id="perfFpVal" class="card-value">-</div> </div>
+              <div class="info-card"> <div class="card-label">First Contentful Paint (FCP)</div> <div id="perfFcpVal" class="card-value">-</div> </div>
+              <div class="info-card"> <div class="card-label">Largest Contentful Paint (LCP)</div> <div id="perfLcpVal" class="card-value">-</div> </div>
+              <div class="info-card"> <div class="card-label">DOM Interactive</div> <div id="perfDomInteractiveVal" class="card-value">-</div> </div>
+              <div class="info-card"> <div class="card-label">DOM Content Loaded Event</div> <div id="perfDomLoadedVal" class="card-value">-</div> </div>
+              <div class="info-card"> <div class="card-label">Page Load Event</div> <div id="perfLoadTimeVal" class="card-value">-</div> </div>
+              <div class="info-card text-only-card">
+                <div class="card-label">Interaction to Next Paint (INP)</div>
+                <p class="card-description">INP measures responsiveness. Best observed with Core Web Vitals library or DevTools. Striving for INP below 200ms is good.</p>
+              </div>
+              <div class="info-card text-only-card">
+                <div class="card-label">Cumulative Layout Shift (CLS)</div>
+                <p class="card-description">CLS measures visual stability. Best observed with Core Web Vitals library or DevTools. Striving for CLS below 0.1 is good.</p>
+              </div>
+            </div>
+          </div>
+          <div class="content-section">
+            <h2>Resource Timing Overview <button id="loadResourceTimingsBtn" class="action-btn action-btn-secondary">Load Resources</button></h2>
+            <div id="resourceTimingOverviewGrid" class="info-grid">
+                 <div class="info-card"><div class="card-label">Total Resources Loaded</div><div id="totalResources" class="card-value">-</div></div>
+            </div>
+            <div class="info-card full-span" id="resourceTimingDetailsCard" style="display:none;">
+                <div class="card-label">Detailed Resource Breakdown</div>
+                <div id="resourceTimingDetailsList" class="list-display-container" style="max-height: 300px; overflow-y:auto;"></div>
+            </div>
+          </div>
+          <div class="content-section">
+             <h2>JavaScript Memory Usage</h2>
+             <div class="info-grid">
+                <div class="info-card"> <div class="card-label">JS Heap Size Limit</div> <div id="perfJsHeapLimitVal" class="card-value">-</div> </div>
+                <div class="info-card"> <div class="card-label">Total JS Heap Size</div> <div id="perfJsHeapTotalVal" class="card-value">-</div> </div>
+                <div class="info-card"> <div class="card-label">Used JS Heap Size</div> <div id="perfJsHeapUsedVal" class="card-value">-</div> </div>
+             </div>
+          </div>
+        </section>
+
+        <!-- NEW PANELS -->
+        <section id="input-devices-panel" class="content-panel" role="tabpanel">
+          <div class="content-section">
+            <h2>Pointer & Touch</h2>
+            <div class="info-grid">
+              <div class="info-card">
+                <div class="card-label">Primary Pointer Type</div>
+                <div id="primaryPointerType" class="card-value">-</div>
+              </div>
+              <div class="info-card">
+                <div class="card-label">Max Touch Points</div>
+                <div id="maxTouchPointsDetail" class="card-value">-</div>
+              </div>
+            </div>
+          </div>
+          <div class="content-section">
+            <h2>Gamepad API <button id="checkGamepadsBtn" class="action-btn"> <svg class="icon-gamepad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.52 6.47a.5.5 0 00-.71 0L14 9.29V11h1.71l2.82-2.82a.5.5 0 000-.71zM8.71 11H11V9.29L8.18 6.47a.5.5 0 00-.71 0L4.65 9.3a.5.5 0 000 .7L7.47 12.8a.5.5 0 00.36.15H10v-2.15L8.71 11z"/><path d="M12 15.7
+M12 15.64A11.2 11.2 0 005.34 13H3.7a1.67 1.67 0 00-1.67 1.67V16.3A1.67 1.67 0 003.7 18h1.63A11.2 11.2 0 0012 15.64zM12 15.64A11.2 11.2 0 0118.66 13h1.63a1.67 1.67 0 011.67 1.67V16.3a1.67 1.67 0 01-1.67 1.67h-1.63A11.2 11.2 0 0112 15.64z"/><circle cx="15.5" cy="14.5" r="1.5"/><circle cx="8.5" cy="14.5" r="1.5"/></svg>Check for Gamepads</button></h2>
+            <div id="gamepadListContainer" class="list-display-container"><p>Click button to check for connected gamepads.</p></div>
+          </div>
+        </section>
+
+        <section id="security-permissions-panel" class="content-panel" role="tabpanel">
+          <div class="content-section">
+            <h2>Security Context</h2>
+            <div class="info-grid">
+              <div class="info-card">
+                <div class="card-label">Is Secure Context (HTTPS)</div>
+                <div id="secureContextVal" class="card-value">-</div>
+              </div>
+            </div>
+          </div>
+          <div class="content-section">
+            <h2>Permissions API Status <button id="checkPermissionsBtn" class="action-btn"> <svg class="icon-check-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>Query Permissions</button></h2>
+            <div id="permissionsListGrid" class="info-grid">
+              <p>Click "Query Permissions" to check status.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="storage-panel" class="content-panel" role="tabpanel">
+          <div class="content-section">
+            <h2>Local Storage <button id="inspectLocalStorageBtn" class="action-btn action-btn-secondary">Inspect</button></h2>
+            <div id="localStorageList" class="list-display-container" style="max-height: 200px; overflow-y: auto;"><p>Click "Inspect" to view Local Storage keys.</p></div>
+          </div>
+          <div class="content-section">
+            <h2>Session Storage <button id="inspectSessionStorageBtn" class="action-btn action-btn-secondary">Inspect</button></h2>
+            <div id="sessionStorageList" class="list-display-container" style="max-height: 200px; overflow-y: auto;"><p>Click "Inspect" to view Session Storage keys.</p></div>
+          </div>
+           <div class="content-section">
+            <h2>General Storage API</h2>
+             <div class="info-grid">
+                <div class="info-card">
+                    <div class="card-label">Storage API Quota (Estimate)</div>
+                    <div id="storageQuotaVal" class="card-value">-</div>
+                </div>
+                <div class="info-card">
+                    <div class="card-label">Storage API Usage (Estimate)</div>
+                    <div id="storageUsageVal" class="card-value">-</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="accessibility-panel" class="content-panel" role="tabpanel">
+          <div class="content-section">
+            <h2>User Accessibility Preferences</h2>
+            <div class="info-grid">
+              <div class="info-card">
+                <div class="card-label">Prefers Reduced Motion</div>
+                <div id="prefersReducedMotionVal" class="card-value">-</div>
+              </div>
+              <div class="info-card">
+                <div class="card-label">Prefers Color Scheme (System)</div>
+                <div id="prefersColorSchemeVal" class="card-value">-</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="hdmi-info-panel" class="content-panel" role="tabpanel">
+          <div class="content-section">
+            <h2>Understanding HDMI & Browser Limitations</h2>
+            <div class="info-grid">
+              <div class="info-card text-only-card critical-notice">
+                <div class="card-label"><svg class="icon-alert-triangle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Important: Browser Capabilities</div>
+                <p class="card-description">
+                  Web browsers (and therefore this JavaScript-based tool) operate in a sandboxed environment for security and privacy.
+                  They **CANNOT** directly access or query low-level hardware information such as:
+                </p>
+                <ul>
+                  <li>The specific <strong>HDMI version</strong> (e.g., 1.4, 2.0, 2.1) of your graphics card, display, or cable.</li>
+                  <li>The <strong>bandwidth capacity or "speed" rating</strong> of your HDMI cable.</li>
+                  <li>The actively negotiated <strong>HDCP version</strong> (e.g., 1.4, 2.2, 2.3) on the physical link.</li>
+                </ul>
+                <p class="card-description">This information is handled at the Operating System, driver, and physical hardware levels, well below what is exposed to web pages.</p>
+              </div>
+
+              <div class="info-card">
+                <div class="card-label">Maximum Display Resolution (Reported)</div>
+                <div id="hdmiMaxResolution" class="card-value">-</div>
+                <p class="card-description">The screen resolution reported by the browser (e.g., `screen.width` x `screen.height`). While high resolutions (like 4K) often require newer HDMI standards (e.g., HDMI 2.0+ for 4K@60Hz), this value reflects what the OS/driver tells the browser about the *display*, not necessarily the full capability of the cable or HDMI port itself.</p>
+              </div>
+
+              <div class="info-card">
+                <div class="card-label">HDCP Status (EME API Hint)</div>
+                <div id="hdmiEmeHdcpStatusVal" class="card-value">-</div>
+                <p class="card-description">This tests if the browser's Encrypted Media Extensions (EME) can satisfy a policy requiring HDCP for a common DRM (e.g., Widevine). A "supported" status suggests the browser *believes* HDCP is available for protected content playback. It does not confirm the specific HDCP version active on the wire.</p>
+              </div>
+
+              <div class="info-card text-only-card">
+                  <div class="card-label">What Can This Tool Tell You (Indirectly)?</div>
+                  <p class="card-description">
+                      While direct HDMI hardware details are out of reach, this tool can show related information:
+                      <ul>
+                          <li><strong>Screen Resolution & Color Depth:</strong> Provides clues about the data rate being currently utilized.</li>
+                          <li><strong>HDR Support (CSS Media Query):</strong> Indicates if the browser *thinks* the display can render HDR content.</li>
+                          <li><strong>EME/DRM Check for HDCP:</strong> Suggests if the software chain is prepared for HDCP-protected playback.</li>
+                      </ul>
+                      For definitive HDMI port/cable/version details, please consult your device specifications or use OS-level diagnostic tools.
+                  </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div id="tooltip"></div>
+        <footer class="app-main-footer">
+          <p>Inspector Pro X v2.0 © <span id="currentYear"></span>. Advanced Browser Diagnostics. Information is indicative and relies on browser-exposed APIs.</p>
+        </footer>
+      </main>
+    </div><!-- End app-content-wrapper -->
+  </div><!-- End app-shell -->
+
+  <script src="script.js"></script>
+</body>
+</html>
