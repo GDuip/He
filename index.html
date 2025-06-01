@@ -4,391 +4,180 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inspector X Omega - Ultimate Browser & System Diagnostics</title>
+  <title>Inspector Ω - Ultimate Browser & System Diagnostics</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Favicon (example) -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛠️</text></svg>">
 </head>
 
 <body>
   <div class="app-shell">
     <aside class="app-sidebar" id="appSidebar">
-      <!-- Sidebar Header -->
       <header class="sidebar-header">
         <div class="logo-title">
-          <span class="logo-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7z"/>
-            </svg>
-          </span>
+          <span class="logo-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7z"/></svg></span>
           <span class="sidebar-title">Inspector Ω</span>
         </div>
-        <button class="sidebar-toggle-btn desktop-toggle" id="sidebarToggleDesktop" title="Toggle Sidebar Width" aria-label="Toggle Sidebar Width">
-            <svg id="desktopToggleIconOpen" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
-            <svg id="desktopToggleIconClosed" style="display:none;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="15" y1="3" x2="15" y2="21"></line></svg>
-        </button>
+        <button class="sidebar-toggle-btn desktop-toggle" id="sidebarToggleDesktop" title="Toggle Sidebar Width"><svg id="desktopToggleIconOpen" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg><svg id="desktopToggleIconClosed" style="display:none;" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="15" y1="3" x2="15" y2="21"/></svg></button>
       </header>
-
-      <!-- Sidebar Navigation -->
       <nav class="sidebar-nav" role="navigation">
         <ul class="nav-list">
-          <li class="nav-item"><a href="#" class="nav-link active" data-target="display-panel" role="button">
-            <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg> Display & Visuals</a></li>
-          <li class="nav-item"><a href="#" class="nav-link" data-target="system-panel" role="button">
-            <svg viewBox="0 0 24 24"><path d="M2 2h20v20H2zm5-2v24m10-24v24M-2 12h24M-2 7h24M-2 17h24"/></svg> System & OS</a></li>
-          <li class="nav-item"><a href="#" class="nav-link" data-target="hardware-panel" role="button">
-            <svg viewBox="0 0 24 24"><path d="M2 3h20v14H2zm20 14H2M8 21h8m-4-4v4"/></svg> Hardware & Sensors</a></li>
-          <li class="nav-item"><a href="#" class="nav-link" data-target="input-panel" role="button">
-            <svg viewBox="0 0 24 24"><path d="M17 2H7a2 2 0 00-2 2v16a2 2 0 002 2h10a2 2 0 002-2V4a2 2 0 00-2-2zM7 4h10v10H7V4zm5 14a1 1 0 110-2 1 1 0 010 2z"/></svg> Input & Peripherals</a></li>
-          <li class="nav-item"><a href="#" class="nav-link" data-target="media-panel" role="button">
-            <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg> Media & Capturing</a></li>
-          <li class="nav-item"><a href="#" class="nav-link" data-target="connectivity-panel" role="button">
-            <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0m-14.1 7.11a6 6 0 016.95 0m-3.48 3.89v.01"/></svg> Connectivity</a></li>
-          <li class="nav-item"><a href="#" class="nav-link" data-target="browser-panel" role="button">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2C10.03 2 8.5 5.58 8.5 10s1.53 8 3.5 8 3.5-3.58 3.5-8-1.53-8-3.5-8z"/></svg> Browser & Storage</a></li>
-          <li class="nav-item"><a href="#" class="nav-link" data-target="performance-panel" role="button">
-            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> Performance</a></li>
-          <li class="nav-item"><a href="#" class="nav-link" data-target="security-panel" role="button">
-            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg> Security & Permissions</a></li>
-          <li class="nav-item"><a href="#" class="nav-link" data-target="advanced-apis-panel" role="button">
-            <svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6m4-16v2m0 16v2"/></svg> Advanced APIs</a></li>
-           <li class="nav-item"><a href="#" class="nav-link" data-target="accessibility-panel" role="button">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01M16.5 12A4.5 4.5 0 0012 7.5M7.5 12A4.5 4.5 0 0112 16.5"/></svg> Accessibility Tools</a></li>
-          <li class="nav-item"><a href="#" class="nav-link" data-target="hdmi-info-panel" role="button">
-            <svg viewBox="0 0 24 24"><path d="M18.36 10.76L12 17.12 5.64 10.76M12 3v14.12"/></svg> HDMI Limitations</a></li>
+          <li class="nav-item"><a href="#" class="nav-link active" data-target="display-panel" role="button"><svg viewBox="0 0 24 24"><path d="M21 3H3v18h18V3zM3 9h18M9 3v18"/></svg><span class="link-text">Display & Visuals</span></a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="system-panel" role="button"><svg viewBox="0 0 24 24"><path d="M4.5 2.5h15A1.5 1.5 0 0121 4v16a1.5 1.5 0 01-1.5 1.5h-15A1.5 1.5 0 013 20V4a1.5 1.5 0 011.5-1.5zM9 2v20M15 2v20M3 8h18M3 16h18"/></svg><span class="link-text">System & OS</span></a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="hardware-panel" role="button"><svg viewBox="0 0 24 24"><path d="M2 7h20v10H2V7zm2 2v6h16V9H4zm4 10h8v2H8v-2zM10 5V3h4v2h-4z"/></svg><span class="link-text">Hardware & Sensors</span></a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="input-panel" role="button"><svg viewBox="0 0 24 24"><path d="M17 2H7a2 2 0 00-2 2v16a2 2 0 002 2h10a2 2 0 002-2V4a2 2 0 00-2-2zm0 2v3H7V4h10zm-5 16a1 1 0 110-2 1 1 0 010 2zm5-3H7V9h10v8z"/></svg><span class="link-text">Input & Peripherals</span></a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="media-panel" role="button"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg><span class="link-text">Media & Capturing</span></a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="connectivity-panel" role="button"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0m-14.1 7.11a6 6 0 016.95 0m-3.48 3.89v.01"/></svg><span class="link-text">Connectivity</span></a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="browser-panel" role="button"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2C10.03 2 8.5 5.58 8.5 10s1.53 8 3.5 8 3.5-3.58 3.5-8-1.53-8-3.5-8z"/></svg><span class="link-text">Browser & Storage</span></a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="performance-panel" role="button"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span class="link-text">Performance</span></a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="security-panel" role="button"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg><span class="link-text">Security & Permissions</span></a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="advanced-apis-panel" role="button"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6m4-16v2m0 16v2"/></svg><span class="link-text">Advanced APIs</span></a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="accessibility-panel" role="button"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 110-16 8 8 0 010 16zm1-11.005L11.005 9 7 13.005l1.995 1.99L11.005 13l1.995 1.995L15 13.005 13 11.005z" fill-rule="evenodd"/></svg><span class="link-text">Accessibility Tools</span></a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="hdmi-info-panel" role="button"><svg viewBox="0 0 24 24"><path d="M18.36 10.76L12 17.12 5.64 10.76M12 3v14.12"/></svg><span class="link-text">HDMI Limitations</span></a></li>
         </ul>
       </nav>
-
-      <!-- Sidebar Controls -->
       <div class="sidebar-controls">
-        <button id="copyReportBtn" class="icon-btn" title="Copy Full Report">
-          <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-          <span class="btn-text">Copy Report</span></button>
-        <button id="themeToggleBtn" class="icon-btn" title="Toggle Theme">
-          <svg id="themeIconSun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-          <svg id="themeIconMoon" style="display:none;" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-          <span class="btn-text">Toggle Theme</span></button>
+        <button id="copyReportBtn" class="icon-btn" title="Copy Full Report"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg><span class="btn-text">Copy Report</span></button>
+        <button id="themeToggleBtn" class="icon-btn" title="Toggle Theme"><svg id="themeIconSun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg id="themeIconMoon" style="display:none;" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><span class="btn-text">Toggle Theme</span></button>
       </div>
     </aside>
 
     <div class="app-content-wrapper">
       <header class="page-header">
-        <button class="mobile-sidebar-toggle" id="sidebarToggleMobile" aria-label="Toggle Mobile Sidebar Menu">
-          <svg viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-        </button>
+        <button class="mobile-sidebar-toggle" id="sidebarToggleMobile" aria-label="Toggle Mobile Sidebar Menu"><svg viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
         <h1>Dashboard</h1>
       </header>
-
       <main class="app-main-content" role="main">
-        <div class="global-disclaimer">
-          <p><strong>Accuracy Note & Limitations:</strong> This tool provides browser-based diagnostics. Direct hardware access (e.g., HDMI version, exact CPU model, detailed sensor calibration) is **NOT possible** from a webpage. Results are based on browser APIs and heuristics. For precise hardware analysis, always use dedicated OS-level or specialized tools.</p>
-        </div>
+        <div class="global-disclaimer"><p><strong>Accuracy Note & Limitations:</strong> This tool provides browser-based diagnostics. Direct hardware access (e.g., HDMI version, exact CPU model, detailed sensor calibration) is **NOT possible** from a webpage. Results are based on browser APIs and heuristics. For precise hardware analysis, always use dedicated OS-level or specialized tools.</p></div>
 
         <!-- ==== Display & Visuals Panel ==== -->
         <section id="display-panel" class="content-panel active" role="tabpanel">
-          <!-- Core Display Info (as before) -->
-          <div class="content-section"><h2>Primary Display Info</h2><div class="info-grid" id="primaryDisplayInfoGrid"></div></div>
-          <!-- Extended Screen Details (as before) -->
-          <div class="content-section"><h2>Extended Screen Details <button id="loadMultiScreenBtn" class="action-btn action-btn-secondary">Load All Screens</button></h2><div id="multiScreenDetailsContainer" class="info-grid" style="display:none;"></div></div>
-          <!-- Refresh Rate Estimator (as before, but visuals might be enhanced by JS) -->
-          <div class="content-section"><h2>Refresh Rate & VSync <button id="startRefreshRateTestBtn" class="action-btn">Start Full Test</button></h2>
+          <div class="content-section"><h2>Primary Display Info</h2><div class="info-grid" id="primaryDisplayInfoGrid"><!-- JS Populated --></div></div>
+          <div class="content-section"><h2>Extended Screen Details <button id="loadMultiScreenBtn" class="action-btn action-btn-secondary">Load All Screens</button></h2><div id="multiScreenDetailsContainer" class="info-grid" style="display:none;"><div class="info-card full-span placeholder-card"><div class="card-value">Click "Load All Screens"</div></div></div></div>
+          <div class="content-section"><h2>Refresh Rate & VSync <button id="startRefreshRateTestBtn" class="action-btn">Start Full FPS Test</button></h2>
             <div class="info-grid">
               <div class="info-card full-span"><div class="card-label">Estimated Display Rate</div><div id="estimatedFpsVal" class="card-value">- Hz</div><canvas id="fpsVisualizer"></canvas><p class="card-description">Uses `requestAnimationFrame`. Also see VSync Purity Test below.</p></div>
-              <!-- NEW: Advanced Refresh Rate / VSync Test -->
               <div class="info-card full-span"><div class="card-label">VSync Purity & Tearing Test</div>
                 <div id="vsyncTestArea" class="visual-test-area"><canvas id="vsyncCanvas"></canvas></div>
-                <button id="startVsyncTestBtn" class="action-btn action-btn-secondary">Start VSync Test</button>
-                <p class="card-description">Observe the moving bar for tearing or stutter. Green line = rAF, Red bar = draw. Should be smooth.</p>
+                <button id="startVsyncTestBtn" class="action-btn action-btn-secondary">Start VSync Visual Test</button>
+                <p class="card-description">Observe the moving elements for tearing or stutter. Green line: rAF timing, Red bar: drawing phase. Should be smooth.</p>
                 <div id="vsyncTestResults" class="card-value">-</div>
               </div>
             </div>
           </div>
-          <!-- NEW: Pixel Tests -->
           <div class="content-section"><h2>Pixel-Level Diagnostics</h2>
             <div class="info-grid">
               <div class="info-card"><div class="card-label">Dead/Stuck Pixel Locator</div>
-                <div class="button-group">
+                <div class="button-group" id="pixelTestColorButtons">
                     <button class="action-btn action-btn-sm" data-color="black">Black</button> <button class="action-btn action-btn-sm" data-color="white">White</button>
                     <button class="action-btn action-btn-sm" data-color="red">Red</button> <button class="action-btn action-btn-sm" data-color="green">Green</button>
                     <button class="action-btn action-btn-sm" data-color="blue">Blue</button> <button class="action-btn action-btn-sm" data-pattern="checker">Checker</button>
-                </div>
-                <div id="pixelTestFullscreenArea" style="display:none; position:fixed; top:0;left:0;width:100vw;height:100vh;z-index:9999;"></div>
-                <p class="card-description">Click color to go full-screen. Press ESC or click to exit. Inspect screen carefully.</p>
+                </div><p class="card-description">Click color to go full-screen. Press ESC or click to exit.</p>
               </div>
               <div class="info-card"><div class="card-label">Pixel Sub-Structure & Inversion Patterns</div>
                 <select id="pixelPatternSelect" class="styled-select">
-                    <option value="rgb_stripes">RGB Stripes</option> <option value="bgr_stripes">BGR Stripes</option> <option value="rg_checker">R/G Checker</option>
-                    <option value="inversion_test_1">Inversion Pattern 1</option> <option value="inversion_test_2">Inversion Pattern 2</option>
+                    <option value="rgb_stripes">RGB Stripes</option><option value="bgr_stripes">BGR Stripes</option><option value="pentile_rgbw">PenTile (RGBW Sim)</option>
+                    <option value="inversion_v_lines">Vertical Line Inversion</option><option value="inversion_h_lines">Horizontal Line Inversion</option><option value="inversion_checker_fine">Fine Checker Inversion</option>
                 </select>
                 <canvas id="pixelPatternCanvas" class="visual-test-canvas-small"></canvas>
-                <p class="card-description">For visual inspection (e.g., with a macro lens) of pixel layout or inversion artifacts.</p>
+                <p class="card-description">For visual inspection of pixel layout or inversion artifacts (e.g., with a macro lens).</p>
               </div>
             </div>
           </div>
-          <!-- NEW: Screen Burn-in -->
           <div class="content-section"><h2>Screen Maintenance</h2>
-            <div class="info-grid">
-                <div class="info-card"><div class="card-label">Screen Burn-in Sweeper</div>
-                    <button id="startBurnInSweeperBtn" class="action-btn action-btn-secondary">Start Sweeper</button>
-                    <p class="card-description">Cycles colors/patterns to potentially mitigate image retention. Not a guaranteed fix for burn-in. Use with caution.</p>
-                </div>
-            </div>
+            <div class="info-grid"><div class="info-card"><div class="card-label">Screen Burn-in Sweeper</div><button id="startBurnInSweeperBtn" class="action-btn action-btn-secondary">Start Sweeper</button><p class="card-description">Cycles colors/patterns. Not a guaranteed fix for burn-in. Use with caution. ESC or click to stop.</p></div></div>
           </div>
         </section>
 
-        <!-- ==== System & OS Panel ==== (Existing + Geolocation) -->
+        <!-- ==== System & OS Panel ==== -->
         <section id="system-panel" class="content-panel" role="tabpanel">
-            <!-- OS Info, Battery, Geolocation sections from previous turn -->
+          <div class="content-section"><h2>Operating System & Platform</h2><div class="info-grid" id="osInfoGrid"></div></div>
+          <div class="content-section"><h2>Battery Status</h2><div class="info-grid" id="batteryInfoGrid"></div></div>
+          <div class="content-section"><h2>Geolocation <button id="checkGeolocationBtn" class="action-btn action-btn-secondary">Test Geolocation</button></h2><div class="info-grid" id="geolocationInfoGrid"></div></div>
         </section>
 
-        <!-- ==== Hardware & Sensors Panel ==== (Existing + more Sensor details) -->
+        <!-- ==== Hardware & Sensors Panel ==== -->
         <section id="hardware-panel" class="content-panel" role="tabpanel">
-            <!-- CPU, RAM, GPU, WebGL sections from previous turn -->
-            <!-- NEW: More detailed Sensor API section -->
-            <div class="content-section"><h2>Device Sensors <button id="checkSensorApisBtn" class="action-btn action-btn-secondary">Re-check Sensors</button></h2>
-                <div class="info-grid">
-                    <div class="info-card"><div class="card-label">Ambient Light Sensor</div><div id="ambientLightSensorVal" class="card-value">-</div><div id="ambientLightReading" class="card-value-small"></div></div>
-                    <div class="info-card"><div class="card-label">Accelerometer</div><div id="accelerometerVal" class="card-value">-</div><div id="accelerometerReading" class="card-value-small"></div></div>
-                    <div class="info-card"><div class="card-label">Gyroscope</div><div id="gyroscopeVal" class="card-value">-</div><div id="gyroscopeReading" class="card-value-small"></div></div>
-                    <div class="info-card"><div class="card-label">Magnetometer</div><div id="magnetometerVal" class="card-value">-</div><div id="magnetometerReading" class="card-value-small"></div></div>
-                    <div class="info-card"><div class="card-label">Compute Pressure API</div><div id="computePressureApiVal" class="card-value">-</div><div id="computePressureState" class="card-value-small"></div> <button id="startComputePressureObs" class="action-btn action-btn-sm">Observe</button></div>
-                </div>
-                <p class="card-description full-span">Sensor availability, readings, and compute pressure require permissions and are often mobile/platform-specific.</p>
-            </div>
+          <div class="content-section"><h2>Core Hardware (Browser View)</h2><div class="info-grid" id="coreHardwareGrid"></div></div>
+          <div class="content-section"><h2>WebGL Details <button id="loadWebGLExtensionsBtn" class="action-btn action-btn-secondary">Load Extensions</button></h2><div class="info-grid" id="webglInfoGrid"></div></div>
+          <div class="content-section"><h2>Device Sensors <button id="checkSensorApisBtn" class="action-btn action-btn-secondary">Re-check/Activate Sensors</button></h2><div class="info-grid" id="sensorsInfoGrid"></div><p class="card-description full-span">Sensor availability, readings, and compute pressure require permissions and are often mobile/platform-specific. Activate sensors to see live data.</p></div>
         </section>
 
-        <!-- ==== Input & Peripherals Panel (NEW) ==== -->
+        <!-- ==== Input & Peripherals Panel ==== -->
         <section id="input-panel" class="content-panel" role="tabpanel">
-            <div class="content-section"><h2>Mouse Inspector</h2>
-                <div class="info-grid">
-                    <div class="info-card"><div class="card-label">Estimated Polling Rate</div><div id="mousePollingRateVal" class="card-value">- Hz</div></div>
-                    <div class="info-card"><div class="card-label">Estimated DPI</div><div id="mouseDpiVal" class="card-value">-</div>
-                        <p class="card-description">Move mouse physically <input type="number" id="mouseCalibrateDistCm" value="5" style="width:50px;"> cm (<input type="number" id="mouseCalibrateDistInch" value="2" style="width:50px;"> inch) then click button.</p>
-                        <button id="calibrateMouseDpiBtn" class="action-btn action-btn-secondary">Calibrate DPI</button>
-                    </div>
-                    <div class="info-card full-span"><div class="card-label">Mouse Movement Tracker</div><div id="mouseMovementArea" class="interactive-area">Hover/Move mouse here to see events.</div>
-                        <div id="mouseEventLog" class="code-text" style="max-height:150px; overflow-y:auto;"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="content-section"><h2>Keyboard Inspector</h2>
-                <div class="info-grid">
-                    <div class="info-card full-span"><div class="card-label">Real-time Keyboard Event Log</div>
-                        <input type="text" id="keyboardTestInput" placeholder="Type here to test keyboard events..." class="styled-input">
-                        <div id="keyboardEventLog" class="code-text" style="max-height:200px; overflow-y:auto;">Press any key...</div>
-                    </div>
-                </div>
-            </div>
-            <div class="content-section"><h2>USB Devices (WebUSB) <button id="scanWebUsbBtn" class="action-btn action-btn-secondary">Request Device Permission</button></h2>
-                <div class="info-grid">
-                    <div class="info-card full-span"><div class="card-label">WebUSB API Status</div><div id="webUsbApiStatus" class="card-value">-</div></div>
-                    <div id="webUsbDeviceList" class="list-display-container full-span" style="display:none;"></div>
-                    <p class="card-description full-span">Requires explicit user permission for EACH device. Limited information accessible.</p>
-                </div>
-            </div>
-            <div class="content-section"><h2>Bluetooth (BLE) Devices <button id="scanBleBtn" class="action-btn action-btn-secondary">Scan for BLE Devices</button></h2>
-                <div class="info-grid">
-                    <div class="info-card full-span"><div class="card-label">Web Bluetooth API Status</div><div id="webBleApiStatus" class="card-value">-</div></div>
-                    <div id="webBleDeviceList" class="list-display-container full-span" style="display:none;"></div>
-                    <p class="card-description full-span">Scans for nearby Bluetooth Low Energy devices. Requires explicit permission.</p>
-                </div>
-            </div>
+          <div class="content-section"><h2>Mouse Inspector</h2><div class="info-grid" id="mouseInspectorGrid"></div></div>
+          <div class="content-section"><h2>Keyboard Inspector</h2><div class="info-grid" id="keyboardInspectorGrid"></div></div>
+          <div class="content-section"><h2>USB Devices (WebUSB) <button id="scanWebUsbBtn" class="action-btn action-btn-secondary">Request Device Permission</button></h2><div class="info-grid" id="webUsbGrid"></div></div>
+          <div class="content-section"><h2>Bluetooth (BLE) Devices <button id="scanBleBtn" class="action-btn action-btn-secondary">Scan for BLE Devices</button></h2><div class="info-grid" id="webBleGrid"></div></div>
         </section>
 
-        <!-- ==== Media & Capturing Panel ==== (Existing + Shape Detection) -->
+        <!-- ==== Media & Capturing Panel ==== -->
         <section id="media-panel" class="content-panel" role="tabpanel">
-            <!-- Audio/Video Codecs, DRM, Speech, Screen Recording sections from previous turn -->
-            <!-- NEW: Shape Detection -->
-            <div class="content-section"><h2>Shape Detection API <button id="startShapeDetectionBtn" class="action-btn action-btn-secondary">Start Camera & Detect</button></h2>
-                <div class="info-grid">
-                    <div class="info-card full-span">
-                        <div class="card-label">Shape Detection Availability</div>
-                        <div id="shapeDetectionApiStatus" class="card-value">-</div>
-                        <div style="position:relative; min-height: 240px; background:var(--bg-tertiary); margin-top:1rem;">
-                            <video id="shapeDetectionVideo" style="width:100%; max-height:300px; display:none;"></video>
-                            <canvas id="shapeDetectionCanvas" style="position:absolute; top:0; left:0; width:100%; height:100%;"></canvas>
-                            <div id="shapeDetectionPlaceholder" class="placeholder-text-large">Camera feed / Detection results here...</div>
-                        </div>
-                        <div class="button-group" style="margin-top:0.5rem;">
-                            <label><input type="checkbox" id="detectBarcodes" checked> Barcodes</label>
-                            <label><input type="checkbox" id="detectFaces" checked> Faces</label>
-                            <label><input type="checkbox" id="detectText"> Text (Experimental)</label>
-                        </div>
-                        <p class="card-description">Attempts real-time detection from webcam. Requires camera permission.</p>
-                    </div>
-                </div>
-            </div>
+          <div class="content-section"><h2>Audio & Video Support</h2><div class="info-grid" id="audioVideoSupportGrid"></div></div>
+          <div class="content-section"><h2>Speech Capabilities <button id="checkSpeechApisBtn" class="action-btn action-btn-secondary">Check APIs</button></h2><div class="info-grid" id="speechApisGrid"></div></div>
+          <div class="content-section"><h2>Screen Capturing & Shape Detection <button id="startShapeDetectionBtn" class="action-btn action-btn-secondary">Start Camera & Detect Shapes</button></h2><div class="info-grid" id="capturingShapeDetectionGrid"></div></div>
         </section>
 
-        <!-- ==== Connectivity Panel ==== (Existing + WebRTC, Reporting API) -->
+        <!-- ==== Connectivity Panel ==== -->
         <section id="connectivity-panel" class="content-panel" role="tabpanel">
-            <!-- Network Status, Speed Test sections from previous turn -->
-            <div class="content-section"><h2>WebRTC Connection Test <button id="startWebRtcTestBtn" class="action-btn action-btn-secondary">Start Loopback Test</button></h2>
-                <div class="info-grid">
-                    <div class="info-card full-span"><div class="card-label">WebRTC API Status</div><div id="webRtcApiStatus" class="card-value">-</div></div>
-                    <div class="info-card full-span"><div class="card-label">Loopback Connection Stats</div>
-                        <div id="webRtcStatsLog" class="code-text" style="max-height:250px; overflow-y:auto;">Click button to start test...</div>
-                    </div>
-                </div>
-            </div>
-            <div class="content-section"><h2>Reporting API Event Log <button id="startReportingObserverBtn" class="action-btn action-btn-secondary">Start Observing</button></h2>
-                <div class="info-grid">
-                    <div class="info-card full-span"><div class="card-label">Reporting API Status</div><div id="reportingApiStatus" class="card-value">-</div></div>
-                    <div class="info-card full-span"><div class="card-label">Observed Reports (CSP, Deprecations, etc.)</div>
-                        <div id="reportingApiLog" class="code-text" style="max-height:200px; overflow-y:auto;">Waiting for reports...</div>
-                    </div>
-                </div>
-            </div>
+          <div class="content-section"><h2>Network Status</h2><div class="info-grid" id="networkStatusGrid"></div></div>
+          <div class="content-section"><h2>Basic Download "Speed Test" <button id="startSpeedTestBtn" class="action-btn">Start Test</button></h2><div class="info-grid" id="speedTestGrid"></div></div>
+          <div class="content-section"><h2>WebRTC Connection Test <button id="startWebRtcTestBtn" class="action-btn action-btn-secondary">Start Loopback Test</button></h2><div class="info-grid" id="webRtcGrid"></div></div>
+          <div class="content-section"><h2>Reporting API Event Log <button id="startReportingObserverBtn" class="action-btn action-btn-secondary">Start Observing</button></h2><div class="info-grid" id="reportingApiGrid"></div></div>
         </section>
 
-        <!-- ==== Browser & Storage Panel ==== (Existing) -->
+        <!-- ==== Browser & Storage Panel ==== -->
         <section id="browser-panel" class="content-panel" role="tabpanel">
-            <!-- Browser Info, Storage, Notifications, Clipboard sections from previous turn -->
+          <div class="content-section"><h2>Core Browser Info</h2><div class="info-grid" id="coreBrowserInfoGrid"></div></div>
+          <div class="content-section"><h2>Storage Capabilities <button id="checkStorageApisBtn" class="action-btn action-btn-secondary">Inspect Storage</button></h2><div class="info-grid" id="storageApisGrid"></div></div>
+          <div class="content-section"><h2>Notifications API <button id="checkNotificationApiBtn" class="action-btn action-btn-secondary">Test Notification API</button></h2><div class="info-grid" id="notificationsApiGrid"></div></div>
+          <div class="content-section"><h2>Clipboard API <button id="checkClipboardApiBtn" class="action-btn action-btn-secondary">Test Clipboard API</button></h2><div class="info-grid" id="clipboardApiGrid"></div></div>
         </section>
 
-        <!-- ==== Performance Panel ==== (Existing + Jank Busters) -->
+        <!-- ==== Performance Panel ==== -->
         <section id="performance-panel" class="content-panel" role="tabpanel">
-            <!-- Page Load, JS Heap sections from previous turn -->
-            <div class="content-section"><h2>"Jank Busters" Animation Performance Suite</h2>
-                <div class="info-grid">
-                    <div class="info-card full-span"><div class="card-label">Animation Tests</div>
-                        <select id="animationTestSelect" class="styled-select">
-                            <option value="css_transforms">Heavy CSS Transforms</option>
-                            <option value="js_canvas_particles">JS Canvas Particles</option>
-                            <option value="dom_manipulation">Rapid DOM Manipulation</option>
-                        </select>
-                        <button id="runAnimationTestBtn" class="action-btn action-btn-secondary">Run Selected Test</button>
-                        <div id="animationTestArea" class="visual-test-area" style="min-height:150px; background:var(--bg-secondary);">Test visualization appears here...</div>
-                        <div id="animationTestFps" class="card-value">FPS: -</div>
-                        <div id="animationTestLongTasks" class="card-value-small">Long Tasks: -</div>
-                    </div>
-                </div>
-            </div>
+          <div class="content-section"><h2>Client-Side Page Performance</h2><div class="info-grid" id="pagePerformanceGrid"></div></div>
+          <div class="content-section"><h2>"Jank Busters" Animation Performance Suite</h2><div class="info-grid" id="jankBustersGrid"></div></div>
         </section>
 
-        <!-- ==== Security & Permissions Panel (NEW - primarily for Permissions API) ==== -->
+        <!-- ==== Security & Permissions Panel ==== -->
         <section id="security-panel" class="content-panel" role="tabpanel">
-            <div class="content-section"><h2>Permissions API Dashboard <button id="refreshPermissionsBtn" class="action-btn action-btn-secondary">Refresh Status</button></h2>
-                <div class="info-grid" id="permissionsDashboardGrid">
-                    <!-- JS will populate this grid with permission statuses -->
-                    <div class="info-card placeholder-card"><div class="card-value">Loading permission statuses...</div></div>
-                </div>
-                <p class="card-description full-span">Shows status of various API permissions for this website's origin.</p>
-            </div>
+          <div class="content-section"><h2>Permissions API Dashboard <button id="refreshPermissionsBtn" class="action-btn action-btn-secondary">Refresh Status</button></h2><div class="info-grid" id="permissionsDashboardGrid"></div><p class="card-description full-span">Shows status of various API permissions for this website's origin. Some permissions (like WebUSB, WebBluetooth) are requested on-demand by specific tools.</p></div>
         </section>
 
-
-        <!-- ==== Advanced APIs Panel ==== (Existing + WebNN, File Checksum) -->
+        <!-- ==== Advanced APIs Panel ==== -->
         <section id="advanced-apis-panel" class="content-panel" role="tabpanel">
-            <!-- General Advanced APIs, Font Access sections from previous turn -->
-             <div class="content-section"><h2>Web Neural Network API (WebNN) <button id="checkWebNnBtn" class="action-btn action-btn-secondary">Check WebNN</button></h2>
-                <div class="info-grid">
-                    <div class="info-card"><div class="card-label">WebNN API (`navigator.ml`)</div><div id="webNnApiStatus" class="card-value">-</div></div>
-                    <div class="info-card"><div class="card-label">Preferred MLContext Device</div><div id="webNnDevicePreference" class="card-value">-</div></div>
-                </div>
-            </div>
-            <div class="content-section"><h2>Local File Checksum (SHA-256)</h2>
-                <div class="info-grid">
-                    <div class="info-card full-span"><div class="card-label">File System Access API Status</div><div id="fileSystemApiChecksumStatus" class="card-value">-</div></div>
-                    <div class="info-card full-span"><div class="card-label">Calculate SHA-256 for Local File</div>
-                        <input type="file" id="fileForChecksum" class="styled-input" style="display:none;"> <!-- Hidden, trigger via button -->
-                        <button id="selectFileForChecksumBtn" class="action-btn action-btn-secondary">Select File...</button>
-                        <div id="checksumFileName" class="card-value-small" style="margin-top:0.5em;">No file selected.</div>
-                        <div id="checksumProgress" class="progress-bar-container" style="display:none;"><div class="progress-bar"></div></div>
-                        <div id="checksumResult" class="card-value code-text" style="margin-top:0.5em;">-</div>
-                    </div>
-                </div>
-            </div>
+          <div class="content-section"><h2>General Advanced Browser APIs Support</h2><div class="info-grid" id="generalAdvancedApisGrid"></div></div>
+          <div class="content-section"><h2>Font Access API <button id="loadLocalFontsBtn" class="action-btn action-btn-secondary">List Available Fonts</button></h2><div class="info-grid" id="fontAccessGrid"></div></div>
+          <div class="content-section"><h2>Web Neural Network API (WebNN) <button id="checkWebNnBtn" class="action-btn action-btn-secondary">Check WebNN</button></h2><div class="info-grid" id="webNnGrid"></div></div>
+          <div class="content-section"><h2>Local File Checksum (SHA-256)</h2><div class="info-grid" id="fileChecksumGrid"></div></div>
         </section>
 
-        <!-- ==== Accessibility Tools Panel (NEW) ==== -->
+        <!-- ==== Accessibility Tools Panel ==== -->
         <section id="accessibility-panel" class="content-panel" role="tabpanel">
-            <div class="content-section"><h2>Color Vision Deficiency Simulator</h2>
-                <div class="info-grid">
-                    <div class="info-card full-span">
-                        <div class="card-label">Apply Simulation to App UI</div>
-                        <select id="cvdSimulationSelect" class="styled-select">
-                            <option value="none">None (Normal Vision)</option>
-                            <option value="protanopia">Protanopia (Red-Blind)</option>
-                            <option value="deuteranopia">Deuteranopia (Green-Blind)</option>
-                            <option value="tritanopia">Tritanopia (Blue-Blind)</option>
-                            <option value="achromatopsia">Achromatopsia (Monochrome)</option>
-                        </select>
-                        <p class="card-description">Applies a CSS/SVG filter to the entire application UI to simulate color vision deficiencies. Page may need a refresh to fully revert some complex SVG filters.</p>
-                    </div>
-                </div>
-                <!-- Placeholder for AOM if it becomes viable -->
-                 <div class="content-section" style="display:none;" id="aomInspectorSection"><h2>Accessibility Object Model (AOM) Inspector (Experimental)</h2>
-                    <div class="info-grid">
-                        <div class="info-card full-span">
-                            <div class="card-label">AOM Support</div><div id="aomSupportStatus" class="card-value">-</div>
-                            <div id="aomTreeContainer" class="code-text" style="max-height: 300px; overflow-y: auto;">AOM tree will appear here...</div>
-                            <p class="card-description">Attempts to display a simplified AOM tree for Inspector UI elements. Highly experimental.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          <div class="content-section"><h2>Color Vision Deficiency Simulator</h2><div class="info-grid" id="cvdSimulatorGrid"></div></div>
+          <div class="content-section" id="aomInspectorSection" style="display:none;"><h2>Accessibility Object Model (AOM) Inspector (Highly Experimental)</h2><div class="info-grid" id="aomInspectorGrid"></div></div>
         </section>
 
-        <!-- ==== HDMI Info Panel ==== (As before - crucial to keep this clear) -->
+        <!-- ==== HDMI Info Panel ==== -->
         <section id="hdmi-info-panel" class="content-panel" role="tabpanel">
-          <div class="content-section">
-            <h2>HDMI Hardware Limitations (Browser Perspective)</h2>
-            <div class="info-grid">
-              <div class="info-card text-only-card value-warning-card">
-                <div class="card-label">HDMI Version Detection</div>
-                <div class="card-value">IMPOSSIBLE VIA BROWSER</div>
-                <p class="card-description">Browsers (JavaScript) **cannot** access low-level hardware link information like the specific HDMI protocol version (e.g., 1.4, 2.0b, 2.1) negotiated between your devices. This is managed by the OS, drivers, and physical hardware.</p>
-              </div>
-              <div class="info-card text-only-card value-warning-card">
-                <div class="card-label">HDMI Cable Speed/Bandwidth Test</div>
-                <div class="card-value">IMPOSSIBLE VIA BROWSER</div>
-                <p class="card-description">The physical characteristics of an HDMI cable, including its certified bandwidth (e.g., 18Gbps, 48Gbps), **cannot** be determined or tested by website code.</p>
-              </div>
-               <div class="info-card text-only-card value-warning-card">
-                <div class="card-label">Active HDCP Version (Hardware Link)</div>
-                <div class="card-value">IMPOSSIBLE VIA BROWSER</div>
-                <p class="card-description">The precise HDCP version (e.g., HDCP 1.4, 2.2, 2.3) active on the physical HDMI connection is **not exposed** to web browsers. The EME HDCP hint in the 'Hardware' panel is for browser content playback policies, not the physical link status.</p>
-              </div>
-              <div class="info-card text-only-card">
-                <div class="card-label">Why these limitations?</div>
-                <div class="card-value">Security & Privacy by Design</div>
-                <p class="card-description">Web browsers operate in a sandboxed environment. Direct access to such detailed hardware information could pose security risks and compromise user privacy. Rely on OS-level utilities or dedicated hardware testing tools for this information.</p>
-              </div>
-            </div>
-          </div>
+          <div class="content-section"><h2>HDMI Hardware Limitations (Browser Perspective)</h2><div class="info-grid" id="hdmiLimitationsGrid"></div></div>
         </section>
         
-        <!-- Fullscreen Pixel Test Overlay -->
-        <div id="pixelTestOverlay" style="display:none; position:fixed; top:0;left:0;width:100vw;height:100vh;z-index:99999; cursor:pointer;"></div>
-
-        <!-- Tooltip & Footer -->
+        <div id="pixelTestOverlay" style="display:none; position:fixed; top:0;left:0;width:100vw;height:100vh;z-index:99999; cursor:pointer;" title="Click or Press ESC to Exit"></div>
         <div id="tooltip"></div>
-        <footer class="app-main-footer">
-          <p>Inspector Ω (Omega) © <span id="currentYear"></span>. Advanced browser-based diagnostics. For educational and indicative purposes only.</p>
-        </footer>
+        <footer class="app-main-footer"><p>Inspector Ω (Omega) © <span id="currentYear"></span>. Advanced browser-based diagnostics. For educational and indicative purposes only.</p></footer>
       </main>
-    </div><!-- End app-content-wrapper -->
-  </div><!-- End app-shell -->
+    </div>
+  </div>
 
-  <!-- SVG Filters for CVD Simulation -->
-  <svg id="cvdFilters" style="display: none;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <svg id="cvdFilters" style="position:absolute; height:0; width:0;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
-      <filter id="protanopia">
-        <feColorMatrix type="matrix" values="0.567,0.433,0,0,0  0.558,0.442,0,0,0  0,0.242,0.758,0,0  0,0,0,1,0" in="SourceGraphic" />
-      </filter>
-      <filter id="deuteranopia">
-        <feColorMatrix type="matrix" values="0.625,0.375,0,0,0  0.7,0.3,0,0,0  0,0.3,0.7,0,0  0,0,0,1,0" in="SourceGraphic" />
-      </filter>
-      <filter id="tritanopia">
-        <feColorMatrix type="matrix" values="0.95,0.05,0,0,0  0,0.433,0.567,0,0  0,0.475,0.525,0,0  0,0,0,1,0" in="SourceGraphic" />
-      </filter>
-      <filter id="achromatopsia">
-        <feColorMatrix type="matrix" values="0.299,0.587,0.114,0,0  0.299,0.587,0.114,0,0  0.299,0.587,0.114,0,0  0,0,0,1,0" in="SourceGraphic" />
-      </filter>
+      <filter id="protanopia"><feColorMatrix type="matrix" values="0.567,0.433,0,0,0  0.558,0.442,0,0,0  0,0.242,0.758,0,0  0,0,0,1,0" in="SourceGraphic" /></filter>
+      <filter id="deuteranopia"><feColorMatrix type="matrix" values="0.625,0.375,0,0,0  0.7,0.3,0,0,0  0,0.3,0.7,0,0  0,0,0,1,0" in="SourceGraphic" /></filter>
+      <filter id="tritanopia"><feColorMatrix type="matrix" values="0.95,0.05,0,0,0  0,0.433,0.567,0,0  0,0.475,0.525,0,0  0,0,0,1,0" in="SourceGraphic" /></filter>
+      <filter id="achromatopsia"><feColorMatrix type="matrix" values="0.299,0.587,0.114,0,0  0.299,0.587,0.114,0,0  0.299,0.587,0.114,0,0  0,0,0,1,0" in="SourceGraphic" /></filter>
     </defs>
   </svg>
-
   <script src="script.js"></script>
 </body>
 </html>
